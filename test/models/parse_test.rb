@@ -19,9 +19,6 @@ class ParseTest < ActiveSupport::TestCase
   	result = Parse.parse(input)
     output = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-    puts result.to_s
-    puts output.to_s
-
     assert result == output
   end
 

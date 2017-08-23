@@ -1,8 +1,6 @@
 class Parse
   def self.parse(score)
     balls = score.chars
-    puts score.to_s
-    puts balls.to_s
     converted_array = []
 
     for i in 0..balls.length-1
