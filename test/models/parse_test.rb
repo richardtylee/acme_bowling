@@ -1,56 +1,31 @@
 require 'test_helper'
 
 class ParseTest < ActiveSupport::TestCase
-  test 'Perfect Game' do
-  	# Given
-    input = "XXXXXXXXXXXX"
-
-    # When
-    result = Parse.parse(input)
-    output = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-
-  	# Then
-  	assert result == output
+  test 'Parse.parse(): Perfect Game' do
+  	assert Parse.parse("XXXXXXXXXXXX") == [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
   end
 
-  test 'null game' do
-  	input = "----------"
-
-  	result = Parse.parse(input)
-    output = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-    assert result == output
+  test 'Parse.parse(): null game' do
+    assert Parse.parse("--------------------") == [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   end
 
-  test 'one spare' do
-  	input = '9/------------------'
-  	result = Parse.parse(input)
-  	output = [9, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-  	assert result == output
+  test 'Parse.parse(): one spare' do
+  	assert Parse.parse("9/------------------") == [9, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   end
 
-  test 'strike' do
-  	input = "X"
-  	result = Parse.convert(input)
-  	output = 10
-
-  	assert result == output
+  test 'Parse.convert(): strike' do
+  	assert Parse.convert("X") == 10
   end
 
-  test 'gutter' do
-  	input = "-"
-  	result = Parse.convert(input)
-  	output = 0
-
-  	assert result == output
+  test 'Parse.convert(): gutter' do
+  	assert Parse.convert("-") == 0
   end
 
-  test 'convert spare' do
+  test 'Parse.convert(): spare' do
   	assert Parse.convert("/") == "/"
   end
 
-  test 'convert 1-9' do
+  test 'Parse.convert(): 1-9' do
   	assert Parse.convert("0") == 0
   	assert Parse.convert("1") == 1
   	assert Parse.convert("2") == 2
@@ -63,7 +38,7 @@ class ParseTest < ActiveSupport::TestCase
   	assert Parse.convert("9") == 9
   end
 
-  test 'spare' do
+  test 'Parse.spare()' do
   	assert Parse.spare("-") == 10
   	assert Parse.spare(1) == 9
   	assert Parse.spare(2) == 8
