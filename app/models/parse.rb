@@ -6,8 +6,9 @@ class Parse
 
 	    for i in 0..balls.length-1
 	      converted = convert(balls[i])
+	      
 	      if converted == "/"
-	      	converted = spare(balls[i-1], converted)
+	      	converted = spare(balls[i-1])
 	      end
 	      converted_array << converted
 	    end
@@ -28,9 +29,8 @@ class Parse
 	  	end
 	  end
 
-	  def spare(previous, current)
-	  	current = 10 - convert(previous)
-	  	current
+	  def spare(previous)
+	  	10 - convert(previous)
 	  end
 	end
 end

@@ -50,7 +50,7 @@ class ParseTest < ActiveSupport::TestCase
   	assert Parse.convert("/") == "/"
   end
 
-  test '1-9' do
+  test 'convert 1-9' do
   	assert Parse.convert("0") == 0
   	assert Parse.convert("1") == 1
   	assert Parse.convert("2") == 2
@@ -64,15 +64,15 @@ class ParseTest < ActiveSupport::TestCase
   end
 
   test 'spare' do
-  	assert Parse.spare(0, "/") == 10
-  	assert Parse.spare(1, "/") == 9
-  	assert Parse.spare(2, "/") == 8
-  	assert Parse.spare(3, "/") == 7
-  	assert Parse.spare(4, "/") == 6
-  	assert Parse.spare(5, "/") == 5
-  	assert Parse.spare(6, "/") == 4
-  	assert Parse.spare(7, "/") == 3
-  	assert Parse.spare(8, "/") == 2
-  	assert Parse.spare(9, "/") == 1
+  	assert Parse.spare("-") == 10
+  	assert Parse.spare(1) == 9
+  	assert Parse.spare(2) == 8
+  	assert Parse.spare(3) == 7
+  	assert Parse.spare(4) == 6
+  	assert Parse.spare(5) == 5
+  	assert Parse.spare(6) == 4
+  	assert Parse.spare(7) == 3
+  	assert Parse.spare(8) == 2
+  	assert Parse.spare(9) == 1
   end
 end
