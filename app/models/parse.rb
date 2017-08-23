@@ -1,6 +1,6 @@
 class Parse
   def self.parse(score)
-    balls = score.scan /\w/
+    balls = score.chars
     puts score.to_s
     puts balls.to_s
     converted_array = []
@@ -29,7 +29,7 @@ class Parse
   end
 
   def self.spare(previous, current)
-  	current = 10 - previous
+  	current = 10 - convert(previous)
   	current
   end
 end
